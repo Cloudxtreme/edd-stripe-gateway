@@ -21,5 +21,5 @@ Notes
 ==========================
 - This plugin will not work with EDD taxes turned on.
 - I totally recommend the <a href="j.mp/edd-stripe">official Stripe Payment Gateway found the in EDD Add-on section</a>. My plugin is a super basic payment gateway and offers less functionality on purpose. My plugin also does not work with the Recurring Payments extension and other quality plugins that the EDD crew develop.
-- The Stripe API requires that CURL is installed on your server. Most hosts allow this but please check that you are able to use it before purchasing this plugin.
+- The Stripe API requires that CURL is installed on your server.
 - Stripe is capable of working in over 130 currencies. If you would like to add more options to your EDD Settings, <a href="https://gist.github.com/halgatewood/654f75a64703665b9cd6">copy this gist to your theme's functions.php file</a>.
