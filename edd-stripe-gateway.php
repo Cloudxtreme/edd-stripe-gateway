@@ -3,7 +3,7 @@
 Plugin Name: Easy Digital Downloads - Stripe Checkout Gateway
 Plugin URL: http://halgatewood.com/downloads/stripe-checkout-gateway
 Description: The simple Stripe gateway for Easy Digital Downloads
-Version: 1.4.1
+Version: 1.5
 Author: Hal Gatewood
 Author URI: http://halgatewood.com
 Contributors: halgatewood
@@ -13,9 +13,6 @@ edd_stripe_checkout_button_label: Checkout Button Text
 edd_stripe_checkout_image: Image found in the stripe popup. Default looks in your theme/images/stripe-logo.png
 */
 
-
-// VERSION ID USED FOR AUTO UPDATING
-define('EDD_HG_STRIPE_VERSION', '1.4.1');
 
 
 // REGISTER THE GATEWAY
@@ -569,29 +566,3 @@ function hg_stripe_edd_add_settings($settings) {
 	return array_merge($settings, $hg_stripe_gateway_settings);	
 }
 add_filter('edd_settings_gateways', 'hg_stripe_edd_add_settings');
-
-
-// EDD AUTO UPLOADER
-if( is_admin() AND isset($edd_options['hg_updater_email_account']) AND $edd_options['hg_updater_email_account'] != '' )
-{
-	$edd_auto_updater_script = dirname(__FILE__) . "/edd-remote-auto-updater.php";
-	
-	if( !class_exists('edd_remote_auto_updater') AND file_exists($edd_auto_updater_script) )
-	{
-		include_once($edd_auto_updater_script);
-	}
-	
-	if( class_exists('edd_remote_auto_updater') )
-	{
-		// vars
-		$settings = array(
-			'version' 		=> EDD_HG_STRIPE_VERSION,
-			'remote' 		=> 'https://halgatewood.com/',
-			'slug' 			=> 'stripe-checkout-gateway',
-			'email'			=> $edd_options['hg_updater_email_account'],
-			'basename' 		=> plugin_basename(__FILE__)
-		);
-		
-		new edd_remote_auto_updater( $settings );
-	}
-}
